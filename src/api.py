@@ -1,20 +1,18 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from src.predict import predict
+from bert_model import predict_bert
 
 app = FastAPI()
 
 class Email(BaseModel):
     text: str
 
-@app.get("/")
-def home():
-    return {"message": "Spam Classifier API running"}
-
-@app.post("/predict")
-def classify(email: Email):
+@app.post("/predict/ml")
+def classify_ml(email: Email):
     return predict(email.text)
 
-@app.post("/batch")
-def batch_classify(emails: list[str]):
-    return [predict(e) for e in emails]
+@app.post("/predict/bert")
+def classify_bert(email: Email):
+    return predict_bert(email.text)
+    
