@@ -2,6 +2,8 @@ from transformers import pipeline
 
 # Load pretrained model
 classifier = pipeline("text-classification")
+#pipeline("sentiment-analysis")
+#pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
 
 def predict_bert(text):
     result = classifier(text)[0]
