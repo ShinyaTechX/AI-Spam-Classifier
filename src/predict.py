@@ -1,4 +1,4 @@
-from model import load_model
+from src.model import load_model
 
 vectorizer, model = load_model()
 

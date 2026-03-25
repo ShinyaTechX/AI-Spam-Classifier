@@ -6,7 +6,7 @@ vectorizer = TfidfVectorizer()
 model = LogisticRegression()
 
 def train_model(X, y):
-    X_vec = vectorizer.fit_transform(x)
+    X_vec = vectorizer.fit_transform(X)
     model.fit(X_vec, y)
 
     with open("model.pkl", "wb") as f:
