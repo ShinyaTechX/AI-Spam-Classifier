@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from src.predict import predict
-from bert_model import predict_bert
+from src.bert_model import predict_bert
 
 app = FastAPI()
 
@@ -15,4 +15,3 @@ def classify_ml(email: Email):
 @app.post("/predict/bert")
 def classify_bert(email: Email):
     return predict_bert(email.text)
-    
